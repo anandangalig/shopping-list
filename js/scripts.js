@@ -1,16 +1,22 @@
 $(document).ready(function(){
-  $("form#shoppingList").submit(function(event){
+  $("form#sentence").submit(function(event){
     event.preventDefault();
-    var shoppingList = [$("#item1").val(), $("#item2").val(), $("#item3").val()]
+    var sentence = $('#inputSentence').val();
 
-    var newList = shoppingList.map(function(shoppingItem){
-      return shoppingItem.toUpperCase();
+    var words = sentence.split(' ');
 
-      });
-      newList.sort()
-      newList.forEach(function(shoppingItem){
-        $("ul").append("<li>" + shoppingItem + "</li>")
-      });
-      alert(newList);
+    var longWords = [];
+
+    words.forEach(function(word){
+      if(word.length >= 3){
+        longWords.push(word);
+      }
+    })
+    longWords.reverse()
+
+    var str = longWords.join(' ');
+
+    alert(str);
+
   });
 });
